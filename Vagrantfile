@@ -9,7 +9,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
   config.vm.provider "virtualbox" do |v|
-    v.name = "Islandora 7.x-1.x Development VM"
+    v.name = "Islandora 7.x-1.x Base VM"
   end
   config.vm.hostname = "islandora"
 
@@ -44,8 +44,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, path: "./scripts/solr.sh", :args => shared_dir
   config.vm.provision :shell, path: "./scripts/gsearch.sh", :args => shared_dir
   config.vm.provision :shell, path: "./scripts/drupal.sh", :args => shared_dir
-  config.vm.provision :shell, path: "./scripts/islandora_modules.sh", :args => shared_dir, :privileged => false
-  config.vm.provision :shell, path: "./scripts/islandora_libraries.sh", :args => shared_dir, :privileged => false
   config.vm.provision :shell, path: "./scripts/tesseract.sh", :args => shared_dir
   config.vm.provision :shell, path: "./scripts/ffmpeg.sh", :args => shared_dir
   config.vm.provision :shell, path: "./scripts/warctools.sh", :args => shared_dir
