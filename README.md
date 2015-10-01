@@ -68,6 +68,18 @@ ssh, scp, rsync:
 
 If you'd like to add your own customization script (to install additional modules, call other scripts, etc.), you can create a `custom.sh` file in the project's `scripts` directory. When that file is present, Vagrant will run it after all the other provisioning scripts have been run.
 
+### Custom base box
+To create a custom base box to use with Atlas (e.g., if you need different versions of Solr, Fedora, Java, etc.) the basic steps are as follows: 
+- Clone the repo 
+ - `git clone https://github.com/Islandora-Labs/islandora_vagrant_base_box`
+ - `cd islandora_vagrant_base_box`
+- Customize the provisioning scripts as necessary (Make note of the VM name)
+- Provision the VM
+ - `vagrant up`
+- Export the VM to a box file 
+ - `vagrant package --base <VM NAME>`
+- [Upload the box file to Atlas using the web interface or otherwise](https://atlas.hashicorp.com/help/vagrant/boxes/create)
+
 ## Authors
 
 * [Nick Ruest](https://github.com/ruebot)
