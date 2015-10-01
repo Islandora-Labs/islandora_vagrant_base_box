@@ -73,12 +73,12 @@ To create a custom base box to use with Atlas (e.g., if you need different versi
 - Clone the repo 
  - `git clone https://github.com/Islandora-Labs/islandora_vagrant_base_box`
  - `cd islandora_vagrant_base_box`
-- Customize as necessary (naming the virtual machine here is a good idea)
+- Customize as necessary (Make note of the VM name)
 - Provision the VM
  - `vagrant up`
-- Export the VM to a package.box 
+- Export the VM to a box file 
  - `vagrant package --base <VM NAME>`
-- [Upload to Atlas using the web interface or otherwise](https://atlas.hashicorp.com/help/vagrant/boxes/create)
+- [Upload the box file to Atlas using the web interface or otherwise](https://atlas.hashicorp.com/help/vagrant/boxes/create)
 
 ## Authors
 
