@@ -1,8 +1,8 @@
-# Islandora Vagrant [![Build Status](https://travis-ci.org/Islandora-Labs/islandora_vagrant.svg?branch=master)](https://travis-ci.org/Islandora-Labs/islandora_vagrant)
+# Islandora Vagrant Base Box [![Build Status](https://travis-ci.org/Islandora-Labs/islandora_vagrant_base_box.svg?branch=master)](https://travis-ci.org/Islandora-Labs/islandora_vagrant_base_box)
 
 ## Introduction
 
-The is a development environment virtual machine for Islandora. It should work on any operating system that supports VirtualBox and Vagrant.
+This is a base box for [Islandora Vagrant](https://github.com/Islandora-Labs/islandora_vagrant), and an export box lives on [atlas](https://atlas.hashicorp.com/ruebot/boxes/islandora-base).
 
 The virtual machine that is built uses 3GB of RAM. Your host machine will need to be able to support that.
 
@@ -15,7 +15,7 @@ N.B. This virtual machine **should not** be used in production.
 
 ## Use
 
-1. `git clone https://github.com/islandora-labs/islandora_vagrant`
+1. `git clone https://github.com/islandora-labs/islandora_vagrant_base_box`
 2. `cd islandora_vagrant`
 3. `vagrant up`
 
@@ -61,7 +61,6 @@ ssh, scp, rsync:
 - Solr 4.2.0
 - Fedora 3.8.1
 - GSearch HEAD
-- Islandora 7.x
 - PHP 5.5.9 
 - Java 8 (Oracle)
 
