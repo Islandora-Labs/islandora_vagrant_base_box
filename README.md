@@ -70,15 +70,15 @@ If you'd like to add your own customization script (to install additional module
 
 ### Custom base box
 To create a custom base box to use with Atlas (e.g., if you need different versions of Solr, Fedora, Java, etc.) the basic steps are as follows: 
-1. Clone the repo 
+- Clone the repo 
  - `git clone https://github.com/Islandora-Labs/islandora_vagrant_base_box`
  - `cd islandora_vagrant_base_box`
-2. Customize the provisioning scripts as necessary (Make note of the VM name)
-3. Provision the VM
+- Customize the provisioning scripts as necessary (Make note of the VM name)
+- Provision the VM
  - `vagrant up`
-4. Export the VM to a box file 
+- Export the VM to a box file 
  - `vagrant package --base <VM NAME>`
-5. [Upload the box file to Atlas using the web interface or otherwise](https://atlas.hashicorp.com/help/vagrant/boxes/create)
+- [Upload the box file to Atlas using the web interface or otherwise](https://atlas.hashicorp.com/help/vagrant/boxes/create)
 - **NOTE: Vagrant will replace the default ssh keys during the provision step. To disable this behavior, add the following line to your Vagrantfile:** 
  - `config.ssh.insert_key = false`
 
