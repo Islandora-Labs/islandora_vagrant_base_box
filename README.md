@@ -79,6 +79,8 @@ To create a custom base box to use with Atlas (e.g., if you need different versi
 - Export the VM to a box file 
  - `vagrant package --base <VM NAME>`
 - [Upload the box file to Atlas using the web interface or otherwise](https://atlas.hashicorp.com/help/vagrant/boxes/create)
+- **NOTE: Vagrant will replace the default ssh keys during the provision step. To disable this behavior, add the following line to your Vagrantfile:** 
+ - `config.ssh.insert_key = false`
 
 ## Authors
 
