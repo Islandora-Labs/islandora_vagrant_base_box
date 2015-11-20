@@ -82,6 +82,11 @@ To create a custom base box to use with Atlas (e.g., if you need different versi
 - **NOTE: Vagrant will replace the default ssh keys during the provision step. To disable this behavior, add the following line to your Vagrantfile:** 
  - `config.ssh.insert_key = false`
 
+## Maintainers
+
+* [Nick Ruest](https://github.com/ruebot)
+* [Luke Taylor](https://github.com/lutaylor)
+
 ## Authors
 
 * [Nick Ruest](https://github.com/ruebot)
