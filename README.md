@@ -11,7 +11,8 @@ N.B. This virtual machine **should not** be used in production.
 ## Requirements
 
 1. [VirtualBox](https://www.virtualbox.org/)
-2. [Vagrant](http://www.vagrantup.com/)
+2. [Vagrant](http://www.vagrantup.com)
+3. [git](https://git-scm.com/)
 
 ## Use
 
@@ -47,22 +48,25 @@ ssh, scp, rsync:
   - username: vagrant
   - password: vagrant
   - Examples
-    - `ssh -p 2222 vagrant@localhost` or  `vagrant ssh`
+    - `ssh -p 2222 vagrant@localhost` or `vagrant ssh`
     - `scp -P 2222 somefile.txt vagrant@localhost:/destination/path`
     - `rsync --rsh='ssh -p2222' -av somedir vagrant@localhost:/tmp`
 
 ## Environment
 
 - Ubuntu 14.04
-- Drupal 7.37
-- MySQL 5.5.41
-- Apache 2.26
-- Tomcat 7.0.52
+- Drupal 7.43
+- MySQL 5.5.47
+- Apache 2.4.7
+- Tomcat 7.0.55.0
 - Solr 4.2.0
 - Fedora 3.8.1
 - GSearch HEAD
-- PHP 5.5.9 
+- PHP 5.5.9-1ubuntu4.14
 - Java 8 (Oracle)
+- FITS 0.10.1
+- drush 5.10.0
+- jQuery 1.10.2
 
 ## Customization
 
