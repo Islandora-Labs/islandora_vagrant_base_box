@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SHARED_DIR=$1
-# shellcheck source=./configs/variables
+# shellcheck source=/configs/variables
 if [ -f "$SHARED_DIR/configs/variables" ]; then
   . "$SHARED_DIR"/configs/variables
 fi
