@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SHARED_DIR=$1
-
+# shellcheck source=./configs/variables
 if [ -f "$SHARED_DIR/configs/variables" ]; then
   . "$SHARED_DIR"/configs/variables
 fi
@@ -18,10 +18,10 @@ if [ ! -f "$DOWNLOAD_DIR/adore-djatoka.tar.gz" ]; then
   wget -q -O "$DOWNLOAD_DIR/adore-djatoka.tar.gz" "http://downloads.sourceforge.net/project/djatoka/djatoka/1.1/adore-djatoka-1.1.tar.gz"
 fi
 
-cd /tmp
+cd /tmp || exit
 cp "$DOWNLOAD_DIR/adore-djatoka.tar.gz" /tmp
 tar -xzvf adore-djatoka.tar.gz
-cd adore-djatoka-1.1
+cd adore-djatoka-1.1 || exit
 mv -v ./* "$DJATOKA_HOME"
 
 # Symlink kdu_compress for Large Image Solution Pack
