@@ -5,6 +5,7 @@ echo "Installing Tesseract"
 SHARED_DIR=$1
 
 if [ -f "$SHARED_DIR/configs/variables" ]; then
+  # shellcheck disable=SC1090
   . "$SHARED_DIR"/configs/variables
 fi
 

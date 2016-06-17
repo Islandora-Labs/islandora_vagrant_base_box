@@ -5,6 +5,7 @@ echo "Installing warctools."
 SHARED_DIR=$1
 
 if [ -f "$SHARED_DIR/configs/variables" ]; then
+  # shellcheck disable=SC1090
   . "$SHARED_DIR"/configs/variables
 fi
 
@@ -15,6 +16,6 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get install python-setuptools python-unittest2 -y --force-yes
 
 # Clone and build warctools
-cd /tmp
+cd /tmp || exit
 git clone https://github.com/internetarchive/warctools.git
 cd warctools && ./setup.py build && ./setup.py install

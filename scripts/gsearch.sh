@@ -5,27 +5,28 @@ echo "Installing GSearch"
 SHARED_DIR=$1
 
 if [ -f "$SHARED_DIR/configs/variables" ]; then
+  # shellcheck disable=SC1090
   . "$SHARED_DIR"/configs/variables
 fi
 
 # Dependencies
-cd /tmp
+cd /tmp || exit
 git clone https://github.com/discoverygarden/basic-solr-config.git
-cd basic-solr-config
+cd basic-solr-config || exit
 git checkout 4.x
-cd islandora_transforms
+cd islandora_transforms || exit
 sed -i 's#/usr/local/fedora/tomcat#/var/lib/tomcat7#g' ./*xslt
 
 # dgi_gsearch_extensions
-cd /tmp
+cd /tmp || exit
 git clone https://github.com/discoverygarden/dgi_gsearch_extensions.git
-cd dgi_gsearch_extensions
+cd dgi_gsearch_extensions || exit
 mvn -q package
 
 # Build GSearch
-cd /tmp
+cd /tmp || exit
 git clone https://github.com/fcrepo3/gsearch.git
-cd gsearch/FedoraGenericSearch
+cd gsearch/FedoraGenericSearch || exit
 ant buildfromsource
 
 # Deploy GSearch
@@ -39,7 +40,7 @@ service tomcat7 restart
 sleep 75
 
 # GSearch configurations
-cd /var/lib/tomcat7/webapps/fedoragsearch/WEB-INF/classes
+cd /var/lib/tomcat7/webapps/fedoragsearch/WEB-INF/classes || exit
 wget -q http://alpha.library.yorku.ca/fgsconfigFinal.zip
 unzip fgsconfigFinal.zip
 
