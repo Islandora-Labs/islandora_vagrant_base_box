@@ -6,6 +6,7 @@ echo "Preparing to install Fedora."
 SHARED_DIR=$1
 
 if [ -f "$SHARED_DIR/configs/variables" ]; then
+  # shellcheck disable=SC1090
   . "$SHARED_DIR"/configs/variables
 fi
 
@@ -58,7 +59,7 @@ rm "$FEDORA_HOME"/data/fedora-xacml-policies/repository-policies/default/deny-pu
 rm "$FEDORA_HOME"/data/fedora-xacml-policies/repository-policies/default/deny-purge-object-if-active-or-inactive.xml
 rm "$FEDORA_HOME"/data/fedora-xacml-policies/repository-policies/default/deny-reloadPolicies-if-not-localhost.xml
 
-cd "$FEDORA_HOME"/data/fedora-xacml-policies/repository-policies/
+cd "$FEDORA_HOME"/data/fedora-xacml-policies/repository-policies/ || exit
 git clone https://github.com/Islandora/islandora-xacml-policies.git islandora
 rm "$FEDORA_HOME"/data/fedora-xacml-policies/repository-policies/islandora/permit-apim-to-anonymous-user.xml
 rm "$FEDORA_HOME"/data/fedora-xacml-policies/repository-policies/islandora/permit-upload-to-anonymous-user.xml

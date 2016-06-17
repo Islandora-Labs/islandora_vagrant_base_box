@@ -3,6 +3,7 @@
 SHARED_DIR=$1
 # shellcheck source=./configs/variables
 if [ -f "$SHARED_DIR/configs/variables" ]; then
+  # shellcheck disable=SC1091
   . "$SHARED_DIR"/configs/variables
 fi
 

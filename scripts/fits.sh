@@ -5,6 +5,7 @@ echo "Installing FITS"
 SHARED_DIR=$1
 
 if [ -f "$SHARED_DIR/configs/variables" ]; then
+  # shellcheck disable=SC1090
   . "$SHARED_DIR"/configs/variables
 fi
 
@@ -20,6 +21,6 @@ if [ ! -f "$DOWNLOAD_DIR/fits-$FITS_VERSION.zip" ]; then
 fi
 
 unzip "$DOWNLOAD_DIR/fits-$FITS_VERSION.zip" -d "$FITS_HOME"
-cd "$FITS_HOME/fits-$FITS_VERSION"
+cd "$FITS_HOME/fits-$FITS_VERSION" || exit
 chmod +x fits.sh
 chmod +x fits-env.sh
