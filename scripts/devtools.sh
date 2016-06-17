@@ -52,7 +52,7 @@ chmod +x /usr/local/bin/phpcb
 
 # Coder & Code Sniffer
 pear install PHP_CodeSniffer
-cd /tmp
+cd /tmp || exit
 wget -q http://ftp.drupal.org/files/projects/coder-8.x-2.1.tar.gz
 tar -xzvf coder-8.x-2.1.tar.gz
 mv -v coder /usr/share

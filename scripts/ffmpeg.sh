@@ -5,6 +5,7 @@ echo "Installing FFmpeg."
 SHARED_DIR=$1
 
 if [ -f "$SHARED_DIR/configs/variables" ]; then
+  # shellcheck disable=SC1090
   . "$SHARED_DIR"/configs/variables
 fi
 
@@ -22,7 +23,7 @@ if [ ! -f "$DOWNLOAD_DIR/ffmpeg-$FFMPEG_VERSION.tar.gz" ]; then
   echo "Downloading FFMpeg"
   wget -q -O "$DOWNLOAD_DIR/ffmpeg-$FFMPEG_VERSION.tar.gz" "http://www.ffmpeg.org/releases/ffmpeg-$FFMPEG_VERSION.tar.gz"
 fi
-cd /tmp
+cd /tmp || exit
 cp "$DOWNLOAD_DIR/ffmpeg-$FFMPEG_VERSION.tar.gz" /tmp
 tar -xzvf ffmpeg-"$FFMPEG_VERSION".tar.gz
 

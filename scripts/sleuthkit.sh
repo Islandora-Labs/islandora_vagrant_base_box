@@ -5,6 +5,7 @@ echo "Installing Sleuthkit."
 SHARED_DIR=$1
 
 if [ -f "$SHARED_DIR/configs/variables" ]; then
+  # shellcheck disable=SC1090
   . "$SHARED_DIR"/configs/variables
 fi
 
@@ -15,6 +16,6 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get install libafflib-dev afflib-tools libewf-dev ewf-tools -y --force-yes
 
 # Clone and compile Sleuthkit
-cd /tmp
+cd /tmp || exit
 git clone https://github.com/sleuthkit/sleuthkit.git
 cd sleuthkit && ./bootstrap && ./configure && make && make install && ldconfig

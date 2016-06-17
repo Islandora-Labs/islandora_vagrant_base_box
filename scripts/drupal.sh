@@ -5,6 +5,7 @@ echo "Installing Drupal."
 SHARED_DIR=$1
 
 if [ -f "$SHARED_DIR/configs/variables" ]; then
+  # shellcheck disable=SC1090
   . "$SHARED_DIR"/configs/variables
 fi
 
@@ -21,7 +22,7 @@ sed -i '/; extension_dir = "ext"/ a\ extension=uploadprogress.so' /etc/php5/apac
 apt-get -y install drush
 a2enmod rewrite
 service apache2 reload
-cd /var/www
+cd /var/www || exit
 
 # Download Drupal
 drush dl drupal --drupal-project-rename=drupal
@@ -31,7 +32,7 @@ chown -R www-data:www-data drupal
 chmod -R g+w drupal
 
 # Do the install
-cd drupal
+cd drupal || exit
 drush si -y --db-url=mysql://root:islandora@localhost/drupal7 --site-name=islandora-development.org
 drush user-password admin --password=islandora
 
@@ -53,8 +54,9 @@ sed -i 's#<VirtualHost \*:80>#<VirtualHost \*:8000>#' $APACHE_CONFIG_FILE
 sed -i 's/Listen 80/Listen \*:8000/' /etc/apache2/ports.conf
 
 sed -i "/Listen \*:8000/a \
-NameVirtualHost \*:8000" /etc/apache2/ports.conf 
+NameVirtualHost \*:8000" /etc/apache2/ports.conf
 
+# shellcheck disable=SC2162
 read -d '' APACHE_CONFIG << APACHE_CONFIG_TEXT
 	ServerAlias islandora-vagrant
 
@@ -99,7 +101,7 @@ service apache2 restart
 if [ ! -d sites/all/modules ]; then
   mkdir -p sites/all/modules
 fi
-cd sites/all/modules
+cd sites/all/modules || exit
 
 # Modules
 drush dl devel imagemagick ctools jquery_update pathauto xmlsitemap views variable token libraries datepicker date
@@ -117,5 +119,5 @@ service apache2 restart
 chown -hR www-data:www-data "$DRUPAL_HOME"/sites/default/files
 
 # Run cron
-cd "$DRUPAL_HOME"/sites/all/modules
+cd "$DRUPAL_HOME"/sites/all/modules || exit
 drush cron

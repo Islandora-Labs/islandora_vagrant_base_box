@@ -5,6 +5,7 @@ echo "Installing Solr"
 SHARED_DIR=$1
 
 if [ -f "$SHARED_DIR/configs/variables" ]; then
+  # shellcheck disable=SC1090
   . "$SHARED_DIR"/configs/variables
 fi
 
@@ -13,7 +14,7 @@ if [ ! -f "$DOWNLOAD_DIR/solr-$SOLR_VERSION.tgz" ]; then
   echo "Downloading Solr"
   wget -q -O "$DOWNLOAD_DIR/solr-$SOLR_VERSION.tgz" "http://archive.apache.org/dist/lucene/solr/$SOLR_VERSION/solr-$SOLR_VERSION.tgz"
 fi
-cd /tmp
+cd /tmp || exit
 cp "$DOWNLOAD_DIR/solr-$SOLR_VERSION.tgz" /tmp
 tar -xzvf solr-"$SOLR_VERSION".tgz
 
@@ -21,7 +22,7 @@ tar -xzvf solr-"$SOLR_VERSION".tgz
 if [ ! -d "$SOLR_HOME" ]; then
   mkdir "$SOLR_HOME"
 fi
-cd /tmp/solr-"$SOLR_VERSION"/example/solr
+cd /tmp/solr-"$SOLR_VERSION"/example/solr || exit
 mv -v ./* "$SOLR_HOME"
 chown -hR tomcat7:tomcat7 "$SOLR_HOME"
 
