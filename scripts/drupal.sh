@@ -19,7 +19,11 @@ export APACHE_CONFIG_FILE=/etc/apache2/sites-enabled/000-default.conf
 apt-get -y install php5-gd php5-dev php5-xsl php-soap php5-curl php5-imagick imagemagick lame libimage-exiftool-perl bibutils poppler-utils
 pecl install uploadprogress
 sed -i '/; extension_dir = "ext"/ a\ extension=uploadprogress.so' /etc/php5/apache2/php.ini
-apt-get -y install drush
+#Ensure same drush as travis
+wget http://alpha.library.yorku.ca/drush-6.3.tar.gz
+tar xf drush-6.3.tar.gz
+sudo mv drush-6.3 /opt/
+sudo ln -s /opt/drush-6.3/drush /usr/bin/drush
 a2enmod rewrite
 service apache2 reload
 cd /var/www || exit
