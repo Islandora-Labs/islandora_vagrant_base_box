@@ -88,7 +88,6 @@ To create a custom base box to use with Atlas (e.g., if you need different versi
 
 ## Maintainers
 
-* [Nick Ruest](https://github.com/ruebot)
 * [Luke Taylor](https://github.com/lutaylor)
 * [Don Richards](https://github.com/donrichards)
 
