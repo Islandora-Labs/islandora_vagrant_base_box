@@ -22,6 +22,8 @@ N.B. This virtual machine **should not** be used in production.
 
 ## Connect
 
+Note: The supplied links apply only to this local vagrant system. They could vary in other installations. 
+
 You can connect to the machine via the browser at [http://localhost:8000](http://localhost:8000).
 
 The default Drupal login details are:
@@ -32,17 +34,17 @@ MySQL:
   - username: root
   - password: islandora
 
-Tomcat Manager:
+[Tomcat Manager:](http://localhost:8080/manager)
   - username: islandora
   - password: islandora
 
-Fedora:
+[Fedora:](http://localhost:8080/fedora/) ([Fedora Admin](http://localhost:8080/fedora/admin) | [Fedora Risearch](http://localhost:8080/fedora/risearch) | [Fedora Services](http://localhost:8080/fedora/services/))
   - username: fedoraAdmin
   - password: fedoraAdmin
 
-GSearch:
-  - username: fgsAdmin
-  - password: fgsAdmin
+[GSearch:](http://localhost:8080/fedoragsearch/rest)
+  - username: fedoraAdmin
+  - password: fedoraAdmin
 
 ssh, scp, rsync:
   - username: vagrant
