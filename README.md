@@ -52,7 +52,6 @@ ssh, scp, rsync:
     - `scp -P 2222 somefile.txt vagrant@localhost:/destination/path`
     - `rsync --rsh='ssh -p2222' -av somedir vagrant@localhost:/tmp`
 
-
 ## Environment
 
 - Ubuntu 14.04
