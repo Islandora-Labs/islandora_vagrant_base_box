@@ -54,22 +54,6 @@ ssh, scp, rsync:
     - `scp -P 2222 somefile.txt vagrant@localhost:/destination/path`
     - `rsync --rsh='ssh -p2222' -av somedir vagrant@localhost:/tmp`
 
-## Environment
-
-- Ubuntu 14.04
-- Drupal 7.43
-- MySQL 5.5.47
-- Apache 2.4.7
-- Tomcat 7.0.55.0
-- Solr 4.2.0
-- Fedora 3.8.1
-- GSearch HEAD
-- PHP 5.5.9-1ubuntu4.14
-- Java 8 (Oracle)
-- FITS 0.10.1
-- drush 5.10.0
-- jQuery 1.10.2
-
 ## Customization
 
 If you'd like to add your own customization script (to install additional modules, call other scripts, etc.), you can create a `custom.sh` file in the project's `scripts` directory. When that file is present, Vagrant will run it after all the other provisioning scripts have been run.
