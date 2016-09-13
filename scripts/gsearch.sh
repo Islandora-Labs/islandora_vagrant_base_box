@@ -11,10 +11,8 @@ fi
 
 # Dependencies
 cd /tmp || exit
-git clone https://github.com/discoverygarden/basic-solr-config.git
-cd basic-solr-config || exit
-git checkout 4.x
-cd islandora_transforms || exit
+git clone -b 4.x --recursive https://github.com/discoverygarden/basic-solr-config.git
+cd basic-solr-config/islandora_transforms || exit
 sed -i 's#/usr/local/fedora/tomcat#/var/lib/tomcat7#g' ./*xslt
 
 # dgi_gsearch_extensions
