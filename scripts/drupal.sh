@@ -29,7 +29,7 @@ service apache2 reload
 cd /var/www || exit
 
 # Download Drupal
-drush dl drupal --drupal-project-rename=drupal
+drush dl drupal-7.x --drupal-project-rename=drupal
 
 # Permissions
 chown -R www-data:www-data drupal
