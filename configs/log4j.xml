@@ -39,6 +39,11 @@
     <appender-ref ref="FILEOUT"/>
   </logger>
 
+  <logger name="dk.defxws.fgssolrremote" additivity="false">
+    <level value="INFO" />
+    <appender-ref ref="FILEOUT"/>
+  </logger>
+
   <root>
     <level value="WARN" />
     <appender-ref ref="STDOUT"/>

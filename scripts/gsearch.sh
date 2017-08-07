@@ -13,6 +13,7 @@ fi
 cd /tmp || exit
 git clone -b 4.10.x --recursive https://github.com/discoverygarden/basic-solr-config.git
 ln -s /var/lib/tomcat7 /usr/local/fedora/tomcat
+sed -i "s|/usr/local/fedora/solr|$SOLR_HOME|g" /tmp/basic-solr-config/index.properties
 
 # dgi_gsearch_extensions
 cd /tmp || exit
@@ -44,7 +45,7 @@ ant -f fgsconfig-basic.xml -Dlocal.FEDORA_HOME="$FEDORA_HOME" -DgsearchUser=fedo
 
 
 # Deploy dgi_gsearch_extensions
-cp -v /tmp/dgi_gsearch_extensions/target/gsearch_extensions-0.1.2-jar-with-dependencies.jar /var/lib/tomcat7/webapps/fedoragsearch/WEB-INF/lib
+cp -v /tmp/dgi_gsearch_extensions/target/gsearch_extensions-0.1.3-jar-with-dependencies.jar /var/lib/tomcat7/webapps/fedoragsearch/WEB-INF/lib
 
 # Solr & GSearch configurations
 cp -v /tmp/basic-solr-config/conf/* "$SOLR_HOME"/collection1/conf
