@@ -24,11 +24,15 @@ if [ ! -d "$SOLR_HOME" ]; then
 fi
 cd /tmp/solr-"$SOLR_VERSION"/example/solr || exit
 mv -v ./* "$SOLR_HOME"
+
+
 chown -hR tomcat7:tomcat7 "$SOLR_HOME"
 
 # Deploy Solr
 cp -v "/tmp/solr-$SOLR_VERSION/dist/solr-$SOLR_VERSION.war" "/var/lib/tomcat7/webapps/solr.war"
-chown tomcat7:tomcat7 /var/lib/tomcat7/webapps/solr.war
+unzip -o /var/lib/tomcat7/webapps/solr.war -d /var/lib/tomcat7/webapps/solr/
+cp /tmp/solr-"$SOLR_VERSION"/example/lib/ext/* /var/lib/tomcat7/webapps/solr/WEB-INF/lib/
+chown -R tomcat7:tomcat7 /var/lib/tomcat7/webapps/solr*
 ln -s "$SOLR_HOME" /var/lib/tomcat7/solr
 
 # Restart Tomcat
