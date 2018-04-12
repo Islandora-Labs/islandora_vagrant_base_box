@@ -18,3 +18,8 @@ SOLR_HOME="/usr/local/solr"
 SOLR_VERSION=4.2.0
 
 DRUPAL_HOME="/var/www/drupal"
+
+CANTALOUPE_HOME="/usr/local/cantaloupe"
+CANTALOUPE_LOGS="/var/log/cantaloupe"
+CANTALOUPE_CACHE="/var/cache/cantaloupe"
+CANTALOUPE_VERSION=3.4.2
