@@ -7,7 +7,7 @@ export APACHE_CONFIG_FILE=/etc/apache2/sites-enabled/000-default.conf
 
 
 if [ -f "$SHARED_DIR/configs/variables" ]; then
-# shellcheck disable=SC1091
+# shellcheck disable=SC1090
   . "$SHARED_DIR/configs/variables"
 fi
 
