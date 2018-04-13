@@ -7,8 +7,8 @@ export APACHE_CONFIG_FILE=/etc/apache2/sites-enabled/000-default.conf
 
 
 if [ -f "$SHARED_DIR/configs/variables" ]; then
-# shellcheck source=/dev/null.
-  . "$SHARED_DIR"/configs/variables
+# shellcheck disable=SC1091
+  . "$SHARED_DIR/configs/variables"
 fi
 
 echo "Installing Cantaloupe"
@@ -54,7 +54,7 @@ echo 'JAVA_OPTS="${JAVA_OPTS} -Dcantaloupe.config=/usr/local/cantaloupe/cantalou
 # add cantaloupe proxy pass 
 if [ "$(grep -c "iiif" $APACHE_CONFIG_FILE)" -eq 0 ]; then
 
-read -d '' APACHE_CONFIG << APACHE_CONFIG_TEXT
+read -r -d '' APACHE_CONFIG << APACHE_CONFIG_TEXT
 	ProxyPass /iiif/2 http://localhost:8080/cantaloupe/iiif/2
 	ProxyPassReverse /iiif/2 http://localhost:8080/cantaloupe/iiif/2
 
