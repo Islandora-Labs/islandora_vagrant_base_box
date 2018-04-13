@@ -28,10 +28,10 @@ if [ ! -f "$DOWNLOAD_DIR/Cantaloupe.zip" ]; then
   wget -q -O "$DOWNLOAD_DIR/Cantaloupe.zip" "https://github.com/medusa-project/cantaloupe/releases/download/v$CANTALOUPE_VERSION/Cantaloupe-$CANTALOUPE_VERSION.zip"
 fi
 
-cd /tmp
+cd /tmp || exit
 cp "$DOWNLOAD_DIR/Cantaloupe.zip" /tmp
 unzip Cantaloupe.zip
-cd Cantaloupe-"$CANTALOUPE_VERSION"
+cd Cantaloupe-"$CANTALOUPE_VERSION" || exit
 mv -v ./* "$CANTALOUPE_HOME"
 
 # Deploy Cantaloupe
@@ -68,11 +68,11 @@ fi
 apt-get -y update
 apt-get install -y openjpeg-tools libopenjpeg2 liblcms2-dev  libtiff-dev libpng-dev libz-dev 
 apt-get install -y cmake
-cd $DOWNLOAD_DIR
+cd "$DOWNLOAD_DIR" || exit
 git clone https://github.com/uclouvain/openjpeg
-cd openjpeg/
+cd openjpeg/ || exit
 mkdir build
-cd build
+cd build || exit
 cmake .. -DCMAKE_BUILD_TYPE=Release
 make
 make install
