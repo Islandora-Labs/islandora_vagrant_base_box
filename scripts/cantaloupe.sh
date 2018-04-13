@@ -7,7 +7,7 @@ export APACHE_CONFIG_FILE=/etc/apache2/sites-enabled/000-default.conf
 
 
 if [ -f "$SHARED_DIR/configs/variables" ]; then
-# shellcheck source=/vagrant/configs/variables
+# shellcheck source=/dev/null.
   . "$SHARED_DIR"/configs/variables
 fi
 
@@ -48,6 +48,7 @@ chown -R tomcat7:tomcat7 "$CANTALOUPE_LOGS"
 chown -R tomcat7:tomcat7 "$CANTALOUPE_CACHE"
 
 # Make tomcat/VM aware of cantaloup's config 
+# shellcheck disable=SC2016
 echo 'JAVA_OPTS="${JAVA_OPTS} -Dcantaloupe.config=/usr/local/cantaloupe/cantaloupe.properties -Dorg.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH=true"' >> /etc/default/tomcat7
 
 # add cantaloupe proxy pass 
