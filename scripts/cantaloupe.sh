@@ -46,15 +46,17 @@ chown -R tomcat7:tomcat7 "$CANTALOUPE_HOME"
 chown -R tomcat7:tomcat7 "$CANTALOUPE_LOGS"
 chown -R tomcat7:tomcat7 "$CANTALOUPE_CACHE"
 
+# Make tomcat/VM aware of cantaloup's config 
+echo 'JAVA_OPTS="${JAVA_OPTS} -Dcantaloupe.config=/usr/local/cantaloupe/cantaloupe.properties -Dorg.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH=true"' >> /etc/default/tomcat7
 
 # add cantaloupe proxy pass 
 if [ "$(grep -c "iiif" $APACHE_CONFIG_FILE)" -eq 0 ]; then
 
 read -d '' APACHE_CONFIG << APACHE_CONFIG_TEXT
-    ProxyPass /iiif/2 http://localhost:8080/cantaloupe/iiif/2
-    ProxyPassReverse /iiif/2 http://localhost:8080/cantaloupe/iiif/2
+	ProxyPass /iiif/2 http://localhost:8080/cantaloupe/iiif/2
+	ProxyPassReverse /iiif/2 http://localhost:8080/cantaloupe/iiif/2
 
-    RequestHeader set X-Forwarded-Port 8000
+	RequestHeader set X-Forwarded-Port 8000
 APACHE_CONFIG_TEXT
 
 sed -i "/<\/VirtualHost>/i $(echo "|	$APACHE_CONFIG" | tr '\n' '|')" $APACHE_CONFIG_FILE
