@@ -61,7 +61,7 @@ read -r -d '' APACHE_CONFIG << APACHE_CONFIG_TEXT
 	RequestHeader set X-Forwarded-Port 8000
 APACHE_CONFIG_TEXT
 
-sed -i "/<\/VirtualHost>/i $(echo "|	$APACHE_CONFIG" | tr '\n' '|')" $APACHE_CONFIG_FILE
+sed -i "/<\/VirtualHost>/i $(echo "|$APACHE_CONFIG" | tr '\n' '|')" $APACHE_CONFIG_FILE
 tr '|' '\n' < $APACHE_CONFIG_FILE > $APACHE_CONFIG_FILE.t 2> /dev/null; mv $APACHE_CONFIG_FILE{.t,}
 
 fi
