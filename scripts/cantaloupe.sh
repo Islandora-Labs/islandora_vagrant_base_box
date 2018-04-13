@@ -7,6 +7,7 @@ export APACHE_CONFIG_FILE=/etc/apache2/sites-enabled/000-default.conf
 
 
 if [ -f "$SHARED_DIR/configs/variables" ]; then
+# shellcheck source=/vagrant/configs/variables
   . "$SHARED_DIR"/configs/variables
 fi
 
