@@ -63,13 +63,18 @@ for MAN_FILE in $MAN_FILES; do gzip /usr/share/man/man1/"${MAN_FILE##*/}"; done
 
 # Fix for https://github.com/Islandora-Labs/islandora_vagrant/issues/127 
 # GhostScript version (9.10) fails to extract PDF pages on RGB format
-cd /opt
-wget https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs923/ghostscript-9.23.tar.gz
-tar xvzf ghostscript-9.23.tar.gz
-cd ghostscript-9.23
+if [ ! -f "$DOWNLOAD_DIR/ghostscript-$GHOSTSCRIPT_VERSION.tar.gz" ]; then
+  echo "Downloading Ghostscript"
+  wget -q -O "$DOWNLOAD_DIR/ghostscript-$GHOSTSCRIPT_VERSION.tar.gz" "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${GHOSTSCRIPT_VERSION//.}/ghostscript-$GHOSTSCRIPT_VERSION.tar.gz"
+fi
+cd /tmp || exit
+cp "$DOWNLOAD_DIR/ghostscript-$GHOSTSCRIPT_VERSION.tar.gz" /tmp
+tar xvzf ghostscript-$GHOSTSCRIPT_VERSION.tar.gz
+cd ghostscript-$GHOSTSCRIPT_VERSION || exit
 ./configure
 make
-checkinstall --pkgname=ghostscript --pkgversion="9.23-dgi" --backup=no --deldoc=yes --fstrans=no --default
+checkinstall --pkgname=ghostscript --pkgversion="$GHOSTSCRIPT_VERSION-fix" --backup=no --deldoc=yes --fstrans=no --default
+ln -s /usr/local/bin/gs /usr/bin/gs
 
 # More helpful packages
 apt-get -y install htop tree zsh #fish
