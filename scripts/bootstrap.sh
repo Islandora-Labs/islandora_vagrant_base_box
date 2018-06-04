@@ -61,6 +61,16 @@ MAN_FILES=$(wget -qO- "http://sourceforge.net/projects/zsh/files/zsh/5.0.2/zsh-5
   | tar xvz -C /usr/share/man/man1/ --wildcards "zsh-5.0.2/Doc/*.1" --strip-components=2)
 for MAN_FILE in $MAN_FILES; do gzip /usr/share/man/man1/"${MAN_FILE##*/}"; done
 
+# Fix for https://github.com/Islandora-Labs/islandora_vagrant/issues/127 
+# GhostScript version (9.10) fails to extract PDF pages on RGB format
+cd /opt
+wget https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs923/ghostscript-9.23.tar.gz
+tar xvzf ghostscript-9.23.tar.gz
+cd ghostscript-9.23
+./configure
+make
+checkinstall --pkgname=ghostscript --pkgversion="9.23-dgi" --backup=no --deldoc=yes --fstrans=no --default
+
 # More helpful packages
 apt-get -y install htop tree zsh #fish
 
