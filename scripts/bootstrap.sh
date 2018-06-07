@@ -72,9 +72,9 @@ cp "$DOWNLOAD_DIR/ghostscript-$GHOSTSCRIPT_VERSION.tar.gz" /tmp
 tar xvzf ghostscript-$GHOSTSCRIPT_VERSION.tar.gz
 cd ghostscript-$GHOSTSCRIPT_VERSION || exit
 ./configure
-make
-checkinstall --pkgname=ghostscript --pkgversion="$GHOSTSCRIPT_VERSION-fix" --backup=no --deldoc=yes --fstrans=no --default
+make && make install
 ln -s /usr/local/bin/gs /usr/bin/gs
+ldconfig
 
 # More helpful packages
 apt-get -y install htop tree zsh #fish
