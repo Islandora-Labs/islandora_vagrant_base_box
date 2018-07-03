@@ -69,8 +69,8 @@ if [ ! -f "$DOWNLOAD_DIR/ghostscript-$GHOSTSCRIPT_VERSION.tar.gz" ]; then
 fi
 cd /tmp || exit
 cp "$DOWNLOAD_DIR/ghostscript-$GHOSTSCRIPT_VERSION.tar.gz" /tmp
-tar xvzf ghostscript-$GHOSTSCRIPT_VERSION.tar.gz
-cd ghostscript-$GHOSTSCRIPT_VERSION || exit
+tar xvzf "ghostscript-$GHOSTSCRIPT_VERSION.tar.gz"
+cd "ghostscript-$GHOSTSCRIPT_VERSION" || exit
 ./configure
 make && make install
 ln -s /usr/local/bin/gs /usr/bin/gs
