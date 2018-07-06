@@ -12,6 +12,8 @@ FEDORA_HOME="/usr/local/fedora"
 
 FFMPEG_VERSION=1.1.4
 
+GHOSTSCRIPT_VERSION=9.23
+
 FITS_HOME="/usr/local/fits"
 FITS_VERSION=1.1.1
 
