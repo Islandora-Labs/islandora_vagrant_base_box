@@ -29,3 +29,6 @@ tar -xzvf ffmpeg-"$FFMPEG_VERSION".tar.gz
 
 # Compile FFmpeg
 cd ffmpeg-"$FFMPEG_VERSION" && ./configure --enable-gpl --enable-version3 --enable-nonfree --enable-postproc --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libdc1394 --enable-libfaac --enable-libgsm --enable-libmp3lame --enable-libopenjpeg --enable-libschroedinger --enable-libspeex --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libxvid && make && make install && ldconfig
+
+# Install ffmpeg2theora
+apt-get -y install ffmpeg2theora
