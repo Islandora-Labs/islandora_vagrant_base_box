@@ -75,6 +75,7 @@ To create a custom base box to use with Atlas (e.g., if you need different versi
 ## Maintainers
 
 * [Don Richards](https://github.com/donrichards)
+* [Ben Rosner](https://github.com/br2490)
 
 ## Authors
 
