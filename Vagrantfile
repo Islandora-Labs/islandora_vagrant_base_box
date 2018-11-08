@@ -33,6 +33,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.vmx["numvcpus"] = "2"
   end
 
+  config.ssh.insert_key = false
+  
   shared_dir = "/vagrant"
 
   config.vm.provision :shell, inline: "sudo sed -i '/tty/!s/mesg n/tty -s \\&\\& mesg n/' /root/.profile", :privileged =>false
