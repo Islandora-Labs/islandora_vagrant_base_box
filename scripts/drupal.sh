@@ -17,6 +17,8 @@ export APACHE_CONFIG_FILE=/etc/apache2/sites-enabled/000-default.conf
 
 # Drush and drupal deps
 apt-get -y install php5-gd php5-dev php5-xsl php-soap php5-curl php5-imagick imagemagick lame libimage-exiftool-perl bibutils poppler-utils
+cp -v "$SHARED_DIR"/configs/ImageMagick_policy.xml /etc/ImageMagick/policy.xml
+chmod 644 /etc/ImageMagick/policy.xml
 pecl install uploadprogress
 sed -i '/; extension_dir = "ext"/ a\ extension=uploadprogress.so' /etc/php5/apache2/php.ini
 #Ensure same drush as travis
