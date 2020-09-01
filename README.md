@@ -1,4 +1,4 @@
-# Islandora Vagrant Base Box [![Build Status](https://travis-ci.org/Islandora-Labs/islandora_vagrant_base_box.svg?branch=master)](https://travis-ci.org/Islandora-Labs/islandora_vagrant_base_box)
+# Islandora Vagrant Base Box [![Build Status](https://travis-ci.org/Islandora-Labs/islandora_vagrant_base_box.svg?branch=main)](https://travis-ci.org/Islandora-Labs/islandora_vagrant_base_box)
 
 ## Introduction
 
