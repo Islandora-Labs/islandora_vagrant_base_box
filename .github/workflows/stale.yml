@@ -1,4 +1,4 @@
-name: 'Close stale issues and PRs'
+name: 'Manage stale issues and PRs'
 on:
   workflow_dispatch:
   schedule:
@@ -6,21 +6,5 @@ on:
 
 jobs:
   stale:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/stale@v9
-        with:
-          days-before-issue-stale: 90
-          days-before-issue-close: 14
-          stale-issue-message: 'This issue is being marked as stale from inactivity and will be automatically closed in 2 weeks unless further action is taken. If this issue is still relevant please comment. Please also consider attending the weekly Tech Call to discuss the issue'
-          days-before-pr-stale: 90 
-          days-before-pr-close: 14
-          stale-pr-message: 'This PR is being marked as stale from inactivity and will be automatically closed in 90 days unless further action is taken. If this PR is still relevant please comment. Please also consider attending the weekly Tech Call to discuss the PR'
-          exempt-issue-labels: 'feature request'
-      - uses: actions/stale@v9
-        with:
-          days-before-stale: 1
-          days-before-close: 14
-          stale-issue-message: 'This feture request issue is being marked as stale from inactivity and will be automatically closed in 2 weeks unless further action is taken. If this issue is still relevant please comment. Please also consider attending the weekly Tech Call to discuss the issue'
-          stale-pr-message: 'This feature request PR is being marked as stale from inactivity and will be automatically closed in 90 days unless further action is taken. If this PR is still relevant please comment. Please also consider attending the weekly Tech Call to discuss the PR'
-          only-labels: 'feature request'
+    uses: Islandora-Labs/.github/.github/workflows/stale.yaml@main
+    secrets: inherit
