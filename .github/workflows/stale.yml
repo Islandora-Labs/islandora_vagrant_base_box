@@ -17,3 +17,10 @@ jobs:
           days-before-pr-close: 14
           stale-pr-message: 'This PR is being marked as stale from inactivity and will be automatically closed in 90 days unless further action is taken. If this PR is still relevant please comment. Please also consider attending the weekly Tech Call to discuss the PR'
           exempt-issue-labels: 'feature request'
+      - uses: actions/stale@v9
+        with:
+          days-before-stale: 365
+          days-before-close: 14
+          stale-issue-message: 'This feture request issue is being marked as stale from inactivity and will be automatically closed in 2 weeks unless further action is taken. If this issue is still relevant please comment. Please also consider attending the weekly Tech Call to discuss the issue'
+          stale-pr-message: 'This feature request PR is being marked as stale from inactivity and will be automatically closed in 90 days unless further action is taken. If this PR is still relevant please comment. Please also consider attending the weekly Tech Call to discuss the PR'
+          only-labels: 'feature request'
